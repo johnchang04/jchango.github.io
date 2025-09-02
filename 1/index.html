@@ -26,10 +26,15 @@
     .row {
       display: flex;
       justify-content: center;
-      gap: 1rem;
       flex-wrap: wrap;
       width: 100%;
       max-width: 1500px;
+    }
+    .row.small {
+      gap: 2.5rem;
+    }
+    .row.large {
+      gap: 1rem;
     }
     .row.small img {
       max-width: 180px;
@@ -42,8 +47,8 @@
       border-radius: 8px;
     }
     .gif {
-      max-width: 800px;
-      width: 100%;
+      width: 600px;
+      height: auto;
       border-radius: 12px;
     }
     .section {
@@ -51,6 +56,13 @@
       flex-direction: column;
       align-items: center;
       gap: 1rem;
+    }
+    .caption {
+      font-size: 1rem;
+      color: #555;
+      margin-top: 0.5rem;
+      text-align: center;
+      font-style: italic;
     }
   </style>
 </head>
@@ -63,6 +75,7 @@
       <img src="images/IMG_3133.jpg" alt="Image 3133">
       <img src="images/IMG_3134.jpg" alt="Image 3134">
     </div>
+    <div class="caption">featuring Nathan Chin</div>
   </div>
 
   <div class="section">
@@ -71,12 +84,14 @@
       <img src="images/IMG_3186.jpg" alt="Image 3186">
       <img src="images/IMG_3190.jpg" alt="Image 3190">
     </div>
+    <div class="caption">Malatang + trashcans</div>
   </div>
 
   <div class="section">
     <h1 class="section-title">Part 3: The Dolly Zoom</h1>
     <img class="gif" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXR0bHBlaGZodjVqYTd0bjVscWsya3dzcDJxa3Bvemt2anJlNmZtbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vbfUFXyRVbQgNN30mh/giphy.gif" 
          alt="Computer man">
+    <div class="caption">six seven</div>
   </div>
 
 </body>
