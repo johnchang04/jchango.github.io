@@ -74,9 +74,21 @@
 </head>
 <body>
   <h1>Project 1</h1>
-
+  <div>In this project, the aim is to align color plates (R, G, B) such that the alignment results in a coherent color image.</div>
   <div class="section">
     <h1 class="section-title">Naive Implementation</h1>
+    <div>
+        The naive approach I implemented is as follows. 
+        Pick a reference plate (I used green) and a target plate (blue or red). 
+        Iterate over different offsets of the target plate on the reference plate, and calculate the similarity of the overlapping sections of the two images with some metric.
+        I used NCC (normalized cross-coefficient) as my similarity metric. Save the offset that yields the highest similarity and repeat the process for the other target plate (blue or red).
+        Finally, stack the three color plates, using the offsets that we calculated for the two target plates.
+    </div>
+
+    <div>
+        In this step, I experimented with different ranges of offsets, trying 10, 20 and finally 30. 30 worked quite well (seems like it's a large enough range to find pretty much all the optimal offsets) and still had relatively short runtime.
+        One optimization that greatly improved the performance was switching from using blue as the reference plate to green. Intuitively, I think this worked better because green is between red and blue in frequency.
+    </div>
     <div class="row small">
       <figure>
         <img src="images/tobolsk.png">
@@ -91,10 +103,26 @@
         <figcaption>r: [7, 1], b: [-5, -2]</figcaption>
       </figure>
     </div>
+    <div class="caption"></div>
   </div>
 
   <div class="section">
     <h1 class="section-title">Pyramid Optimization</h1>
+    <div>
+        The naive approach works fine for smaller images, but it becomes expensive when we try to shift large images, iterating over the same ranges as smaller images.
+        However, if we decrease the range in which we look for offsets, this yields poorer results (since we may be missing out on the correct alignment by only examining a small portion of them).
+    </div>
+
+    <div>
+        The solution is to downsize the image a few times, recursively. At the base of recursion, calculate the alignment for the (very) downsized version of the large image, which will be small, over a similar range as our naive implementation (which we can now afford to do).
+        Pass the offset calculated up to the previous recursive call, which will then calculate offsets for the less-downsized version of the image using that offset as the center point, and iterating over a smaller range. Since the previous recursive call gave us a rough idea of the space where we should look, this recursive call won't need to iterate over as large of a space.
+    </div>
+
+    <div>
+        In this step, I experimented with a few different depths and ranges, and ultimately settled on depth = 5 and ranges = [35, 25, 10, 6, 2] ordered from the base to the start of recursion. I used trial and error to decide on a good range, with the general intuition of roughly doubling the range as we go down the recursive stack. 
+        I also tried using shallower depths (depth = 3 or 4) first but noticed much crisper results with depth = 5.
+        For each image, I've included the offset that my algorithm calculated (r = offset of red plate from green; b = offset of blue plate from green). 
+    </div>
     <div class="row small">
       <figure>
         <img src="images/church.png">
@@ -145,6 +173,7 @@
 
   <div class="section">
     <h1 class="section-title">Verification</h1>
+    <div>I generated these images to verify the correctness of my approach, and to see the results on other images in the Prokudin-Gorsky collection which I found particularly interesting.</div>
     <div class="row small">
       <figure>
         <img src="images/onion.png">
