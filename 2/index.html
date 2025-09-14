@@ -74,7 +74,9 @@
 </head>
 <body>
   <h1>Project 1</h1>
-  <div>In this project, the aim is to align color plates (R, G, B) such that the alignment results in a coherent color image.</div>
+  <div>In this project, the aim is to align color plates (R, G, B) such that the alignment results in a coherent color image.
+    These color plates are from the Prokudin-Gorsky collection, developed by Sergey Prokudin-Gorsky in the last days of the Russian Empire.
+  </div>
   <div class="section">
     <h1 class="section-title">Naive Implementation</h1>
     <div>
@@ -88,6 +90,10 @@
     <div>
         In this step, I experimented with different ranges of offsets, trying 10, 20 and finally 30. 30 worked quite well (seems like it's a large enough range to find pretty much all the optimal offsets) and still had relatively short runtime.
         One optimization that greatly improved the performance was switching from using blue as the reference plate to green. Intuitively, I think this worked better because green is between red and blue in frequency.
+    </div>
+
+    <div>
+        In the following image captions, r refers to the offset of the red plate with respect to the green plate, and b refers to the offset of the blue plate with respect to the green plate.
     </div>
     <div class="row small">
       <figure>
@@ -190,6 +196,18 @@
       <figure>
         <img src="images/snow.png">
         <figcaption>r: [57, -6], b: [-48, -1]</figcaption>
+      </figure>
+      <figure>
+        <img src="images/regalia.png">
+        <figcaption>r: [90, -19], b: [-25, 18]</figcaption>
+      </figure>
+      <figure>
+        <img src="images/mosque.png">
+        <figcaption>r: [44, 1], b: [-26, -8]</figcaption>
+      </figure>
+      <figure>
+        <img src="images/rocks.png">
+        <figcaption>r: [85, 22], b: [-56, -35]</figcaption>
       </figure>
     </div>
   </div>
