@@ -77,11 +77,20 @@
     <div class="section">
     <h1 class="section-title">1.1: Convolutions</h1>
 
+    <div>
+        Firstly, I implemented two functions for calculating convolutions: one naive (4 nested for-loops) and one optimized (2 nested for loops). 
+        Both functions are O(H*W*k^2) but the second function uses np.sum which applies vectorized optimizations, making the constant factor much smaller.
+        I used the equation padding = (k - 1) / 2 to have the output image be the same size as the input image.
+    </div>
         <div class="row large">
       <figure>
         <img src="images/convolutions.png">
         <figcaption>code for convolutions</figcaption>
       </figure>
+    </div>
+
+    <div>
+        Next, I tested my convolution functions by applying convolutions with the box filter, dx filter, and dy filter on a selfie.
     </div>
 
     <div class="row small">
