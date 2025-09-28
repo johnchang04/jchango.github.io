@@ -118,7 +118,13 @@
 
   <div class="section">
     <h1 class="section-title">1.2: Finite Difference Operator</h1>
+    <div>
+In this section, I computed the gradient magnitude image of this cameraman image by computing the dx and dy convolved versions of the image, and then computing the square root of the squares of their sums. This essentially combines the dx and dy convolutions, resulting in all of the "edges" of the image. dx essentially computes the vertical edges by showing any drastic horizontal changes, and similarly for dy with horizontal edges.
 
+</div>
+    <div>
+Then, in order to binarize between edge and non-edge, I computed the binarization of the gradient magnitude image, experimenting with different thresholds for when values should be cast to 1 vs 0.
+</div>
     <div class="row small">
       <figure>
         <img src="images/cameraman_gmi.png">
@@ -135,7 +141,10 @@
 
     <div class="section">
     <h1 class="section-title">1.3: Derivative Of Gaussian</h1>
-
+<div>
+    The edges derivered from the binarized GMI in the previous section are a bit too noisy. To help alleviate this problem, we can first smooth the image via the Gaussian filter before creating the binarized GMI by applying the dx and dy filters, deriving the gradient magnitude, and binarizing. 
+    Equivalently, we can first apply dx and dy to the Gaussian filter get the derivatives of the filter itself. We then convolve the image using these DoG filters, derive the gradient magnitude, and binarize.
+</div>
     <div class="row small">
       <figure>
         <img src="images/cameraman_dog.png">
@@ -150,7 +159,12 @@
 
   <div class="section">
     <h1 class="section-title">2.1: Sharpening</h1>
-
+<div>
+    We can "sharpen" an image by subtracting its blurred version. This can be implemented as a single filter which is known as the Laplacian.
+    The filter follows the equation ((1 + alpha)*e_filter - alpha*gaussian), where the e_filter is simply 0s everywhere except the point we are applying the filter on.
+    The variable alpha determines how much to sharpen the image by (i.e. how much blur to subtract), so increasing alpha will sharpen the image more.
+    As shown below, we can also sharpen the sharpened version of the image. 
+</div>
     <div class="row small">
       <figure>
         <img src="images/taj.png">
@@ -194,6 +208,13 @@
     <div class="section">
     <h1 class="section-title">2.2: Hybrid Images</h1>
 
+    <div>
+        Given two images A and B, we can hybridize them in a special way by summing together a low-frequency version of A and high-frequency version of B.
+        This results in the optical phenomenon of seeing something that looks more like A when we view the image closer, and more like B when we view the image farther away.
+        This is because our eyes see less high frequencies as we move farther away from an image.
+    </div>
+
+    <div>Here is an example provided by the CS180 course staff.</div>
     <div class="row small">
       <figure>
         <img src="images/nutmeg.jpg">
@@ -225,7 +246,7 @@
       </figure>
     </div>
 
-    
+    <div>Here, I've attempted to create an image that shows Legolas from Lord of the Rings close up and Aragorn as one steps farther away (or squints one's eyes). </div>
     <div class="row large">
       <figure>
         <img src="images/legolas.jpg" width="300">
@@ -244,6 +265,7 @@
     </div>
   </div>
 
+  <div>Here, I've tried to create a "sheep in wolf's clothing" -- from far away, the image appears to be a wolf, but as we look closer, it becomes a sheep.</div>
     <div class="row large">
       <figure>
         <img src="images/lilgoat.jpeg" width="300">
@@ -257,7 +279,7 @@
         <div class="row large">
       <figure>
         <img src="images/wolf_sheep.png" width="350">
-        <figcaption>Wolf in Sheep's clothing</figcaption>
+        <figcaption>Wolf + Sheep combined</figcaption>
       </figure>
     </div>
   </div>
@@ -265,6 +287,12 @@
 
   <div class="section">
     <h1 class="section-title">2.3 - 4: MultiResolution Blending</h1>
+    <div>To achieve more seamless blends between images, the process is as follows.
+    1. Create Gaussian and Laplacian stacks. We increasingly blur the image and compute the Laplacian at each step, i.e. for lower and lower frequencies.
+        2. Create a Gaussian stack for the mask we want to use to define the boundary between the two images we are combining. 3. Multiply the most blurred image (at the bottom of the Gaussian stack) and the most blurred mask to get our base.
+    4. Repeatedly add the product of the next most blurred mask and the corresponding Laplacian. Essentially, we are trying to blur at various frequency levels for an overall smoother effect.
+    We can use both vertical / horizontal masks and irregular masks to achieve the same effect.
+    </div>
     <div class="row small">
       <figure>
         <img src="images/zeger_base_gaussian.png">
