@@ -43,7 +43,6 @@
     }
     .row.large img {
       max-width: 500px;
-      width: 100%;
       border-radius: 8px;
     }
     .gif {
@@ -78,6 +77,13 @@
     <div class="section">
     <h1 class="section-title">1.1: Convolutions</h1>
 
+        <div class="row large">
+      <figure>
+        <img src="images/convolutions.png">
+        <figcaption>code for convolutions</figcaption>
+      </figure>
+    </div>
+
     <div class="row small">
       <figure>
         <img src="images/IMG_2581.jpg">
@@ -109,6 +115,8 @@
         <img src="images/cameraman_gmi.png">
         <figcaption>Gradient Magnitude Image of Cameraman</figcaption>
       </figure>
+    </div>
+        <div class="row small">
       <figure>
         <img src="images/cameraman_gmi_binarized.png">
         <figcaption>Gradient Magnitude Image of Cameraman, binarized w/ cutoff = 120</figcaption>
@@ -121,12 +129,12 @@
 
     <div class="row small">
       <figure>
-        <img src="images/cameraman.png">
-        <figcaption>convolve with Gaussian -> compute GMI -> binarize ()</figcaption>
+        <img src="images/cameraman_dog.png">
+        <figcaption>blur image with Gaussian -> convolve blurred image with dx, dy filters -> compute GMI -> binarize (threshold=90)</figcaption>
       </figure>
       <figure>
-        <img src="images/cameraman_again.png">
-        <figcaption></figcaption>
+        <img src="images/cameraman_dog_again.png">
+        <figcaption>convolve Gaussian with dx, dy filters -> convolved image with DoG(x), DoG(y) filters -> compute GMI -> binarize (threshold=70)</figcaption>
       </figure>
     </div>
   </div>
@@ -207,7 +215,44 @@
         <figcaption>Derek + Nutmeg Hybrid Image FFT</figcaption>
       </figure>
     </div>
+
+    
+    <div class="row large">
+      <figure>
+        <img src="images/legolas.jpg" width="300">
+        <figcaption>Legolas, original</figcaption>
+      </figure>
+      <figure>
+        <img src="images/aragorn.jpg" width="300">
+        <figcaption>Aragorn, original</figcaption>
+      </figure>
+    </div>
+        <div class="row large">
+      <figure>
+        <img src="images/legolas_aragorn.png" width="500">
+        <figcaption>Legolas + Aragorn</figcaption>
+      </figure>
+    </div>
   </div>
+
+    <div class="row large">
+      <figure>
+        <img src="images/lilgoat.jpeg" width="300">
+        <figcaption>Sheep, original</figcaption>
+      </figure>
+      <figure>
+        <img src="images/wolf.jpg" width="300">
+        <figcaption>Wolf, original</figcaption>
+      </figure>
+    </div>
+        <div class="row large">
+      <figure>
+        <img src="images/wolf_sheep.png" width="350">
+        <figcaption>Wolf in Sheep's clothing</figcaption>
+      </figure>
+    </div>
+  </div>
+
 
   <div class="section">
     <h1 class="section-title">2.3 - 4: MultiResolution Blending</h1>
