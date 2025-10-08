@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en" rel="preload">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project 0</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: 'Inter', sans-serif;
+      background: #fafafa;
+      color: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    h1.section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 1500px;
+    }
+    .row.small {
+      gap: 2.5rem;
+    }
+    .row.large {
+      gap: 1rem;
+    }
+    .row.small img {
+      max-width: 240px;
+      width: 100%;
+      border-radius: 8px;
+    }
+    .row.large img {
+      max-width: 500px;
+      border-radius: 8px;
+    }
+    .row.huge img {
+      max-width: 1000px;
+      border-radius: 8px;
+    }
+    .gif {
+      width: 600px;
+      height: auto;
+      border-radius: 12px;
+    }
+    .section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    figure {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+    }
+    figcaption {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 0.5rem;
+      text-align: center;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <h1>Project 3: Mosaic</h1>
+
+    <div class="section">
+    <h1 class="section-title">1.3: Rectification</h1>
+
+    <div>
+    </div>
+        <div class="row large">
+      <figure>
+        <img src="images/stacks.jpg">
+        <figcaption>Mainstacks Poster</figcaption>
+      </figure>
+      <figure>
+        <img src="images/stacks_warped_nn.png">
+        <figcaption>Rectified with Nearest Neighbors</figcaption>
+      </figure>
+      <figure>
+        <img src="images/stacks_warped_bilinear.png">
+        <figcaption>Rectified with Bilinear</figcaption>
+      </figure>
+    </div>
+      <div class="row large">
+      <figure>
+        <img src="images/ortho.jpg">
+        <figcaption>Mainstacks Poster</figcaption>
+      </figure>
+      <figure>
+        <img src="images/ortho_warped_nn_full.png">
+        <figcaption>Rectified with Nearest Neighbors (full image)</figcaption>
+      </figure>
+      <figure>
+        <img src="images/ortho_warped_nn.png">
+        <figcaption>Rectified with Nearest Neighbors (zoomed)</figcaption>
+      </figure>
+      <figure> 
+        <img src="images/ortho_warped_bilinear.png">
+        <figcaption>Rectified with Bilinear (zoomed)</figcaption>
+      </figure>
+
+      <div class="row large">
+              <figure>
+        <img src="images/IMG_3549.jpg">
+        <figcaption>Purple House Left</figcaption>
+      </figure>
+      <figure>
+        <img src="images/IMG_3547.jpg">
+        <figcaption>Purple House Center</figcaption>
+      </figure>
+      </div>
+
+      <div class="row huge">
+      <figure>
+        <img src="images/purple_house_left_center.png">
+        <figcaption>Purple House Mosaic</figcaption>
+      </figure>
+    </div>
+
+          <div class="row large">
+              <figure>
+        <img src="images/blue_house1.jpg">
+        <figcaption>Blue House Lower</figcaption>
+      </figure>
+      <figure>
+        <img src="images/blue_house2.jpg">
+        <figcaption>Blue House Upper</figcaption>
+      </figure>
+      </div>
+
+      <div class="row huge">
+      <figure>
+        <img src="images/blue_house_cropped.png">
+        <figcaption>Blue House Mosaic (Cropped)</figcaption>
+      </figure>
+    </div>
+
+    </div>
+  </div>
+</body>
+</html>
